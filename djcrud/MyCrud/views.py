@@ -1,4 +1,6 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
+
+from djcrud.MyCrud.models import MyTable
 
 # Create your views here.
 
@@ -15,4 +17,18 @@ def Login(req):
     return render(req,'Login.html')
 
 def Userdata(req):
-    return render(req,'Userdata.html')
+    MyData = MyTable.objects.all()
+    objData = {
+        "Rows" : MyData
+    }
+    
+    return render(req,'Userdata.html',context=objData)
+
+def Save(req): 
+    Firstname = req.POST.get("Fname")
+    Lastname = req.POST.get("Lname")
+    Email = req.POST.get("Email")
+    Password = req.POST.get("Password")
+    return redirect(req,"UserData")
+
+MyObj = MyTable(Firstname=Firstname,)
