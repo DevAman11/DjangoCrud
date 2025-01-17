@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect
 
-from djcrud.MyCrud.models import MyTable
+from .models import MyTable
 
 # Create your views here.
 
