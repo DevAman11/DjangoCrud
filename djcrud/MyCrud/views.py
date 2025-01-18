@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,redirect
 
 from .models import MyTable
 
@@ -24,11 +24,37 @@ def Userdata(req):
     
     return render(req,'Userdata.html',context=objData)
 
-def Save(req): 
+def save(req): 
     Firstname = req.POST.get("Fname")
     Lastname = req.POST.get("Lname")
     Email = req.POST.get("Email")
     Password = req.POST.get("Password")
-    return redirect(req,"UserData")
+    
+    MyObj = MyTable(Firstname=Firstname,Lastname=Lastname,Email = Email, Password = Password)
+    MyObj.save()
+    return redirect('Userdata')
 
-MyObj = MyTable(Firstname=Firstname,)
+
+
+def Delete(req,id):
+    deleteData=MyTable.objects.get(id=id)
+    deleteData.delete()
+    return redirect('Userdata')
+
+def Edit(req,id):
+    editdata=MyTable.objects.get(id=id)
+    Data = {
+        "editdata": editdata
+    }
+    
+    return render(req,"Update.html" , context=Data)
+
+def Update(req,id):
+    editdata=MyTable.objects.get(id=id)
+    editdata.Firstname=req.POST.get("Fname")
+    editdata.Lastname=req.POST.get("Lname")
+    editdata.Email=req.POST.get("Email")
+    editdata.save()
+    
+    return redirect("Userdata")
+
