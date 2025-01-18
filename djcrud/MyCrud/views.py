@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render,redirect
 
 from .models import MyTable
@@ -14,8 +15,14 @@ def Register(req):
     return render(req,'Register.html')
 
 def Login(req):
-    return render(req,'Login.html')
-
+    Email=req.POST.get("Email")
+    Password=req.POST.get("Password")
+    LoginData=MyTable.objects.get(Email=Email)
+    if LoginData.Password == Password:
+        return HttpResponse("Login SuccessFully")
+    else:
+        return HttpResponse("Info Doesn't Match")
+       
 def Userdata(req):
     MyData = MyTable.objects.all()
     objData = {

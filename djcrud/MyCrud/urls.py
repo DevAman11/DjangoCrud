@@ -14,7 +14,7 @@ urlpatterns = [
     path('Edit/<int:id>',views.Edit,name="Edit"),
     path('Update/<int:id>',views.Update,name="Update"),
     
-    path('Login',views.Login,name="Login")
+    # path('Login/',views.Login,name="Login")
     
     
     
