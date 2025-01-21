@@ -12,7 +12,7 @@
 
 
 <section class="relative py-16 bg-blueGray-50">
-<div class="w-full mb-12 px-4">
+<div class="w-full  px-4">
   <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded 
   bg-pink-900 text-white">
     <div class="rounded-t mb-0 px-4 py-3 border-0">
@@ -43,7 +43,7 @@
               <span class="ml-3 font-bold text-white"> {{x.id}} </span></th>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{x.Firstname}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-              <i class="fas fa-circle text-orange-500 mr-2"></i>{{x.Lastname}}</td>
+              <i class="fas  mr-2"></i>{{x.Lastname}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{x.Email}}
             </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><div class="flex items-center">
@@ -59,7 +59,6 @@
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
              <a href="{% url "Edit" x.id %}">Edit</a>
              <a href="{% url "Delete" x.id %}">Delete</a>
-
             </td>
           </tr>
           {% endfor %}
